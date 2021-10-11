@@ -34,8 +34,9 @@ console.log(streamingMovies);
 const disneyJunior = ["Mickey Mouse Clubhouse", "Spidey and His Amazing Friends"];
 // 3b
 const [mickey, spidey] = disneyJunior
-// 3c Destructuring does not change the value of the disneyJunior Array. So although the mickey variable is now an object with the key as mickey and the value of "Mickey Mouse Clubhouse" and the spidey variable is now an object with the key as spidey and the value of "Spidey and His Amazing Friends," the two shows are still the disneyJunior Array too.
+// 3c Destructuring does not change the value of the disneyJunior Array. So although the mickey variable is now has the value of "Mickey Mouse Clubhouse" and the spidey variable is now has the value of "Spidey and His Amazing Friends," the two shows are still the disneyJunior Array too.
 console.log(disneyJunior);
+// or console.log(mickey, spidey);
 
 
 // 4a
@@ -46,7 +47,8 @@ const avengers = {
 // 4b
 const {warMachine, theHulk} = avengers;
 // 4c
-console.log(avengers);
+// console.log(avengers); This will get the object value pairs. to get the values of the two new variables, we must do this:
+console.log(warMachine, theHulk);
 // 4d
 const moreAvengers = {
     blackWidow: "Natasha Romanoff",
@@ -66,8 +68,33 @@ const bonus = {
     third: [7, 8, 9]
 };
 // 5a
-const {first, second, third} = bonus;
-const all = [...first, ...second, ...third];
+// const {first, second, third} = bonus;
+// const all = [...first, ...second, ...third];
+// console.log(all);
+// Better to do it this way:
+const all = [
+    ...bonus["first"],
+    ...bonus["second"],
+    ...bonus["third"]
+];
 console.log(all);
-// 5b
-const [one, two, three, four, five, six, seven, eight, nine] = all;
+/* OR:
+const all = [
+    ...bonus.first,
+    ...bonus.second,
+    ...bonus.third
+] */
+// 5b He said this was not right because he was wanting the "bonus" object and not the "all"
+// const [one, two, three, four, five, six, seven, eight, nine] = all;
+// This destructures all values of the keys within the object.
+// const {first, second, third} = bonus;
+// This destructures all values of arrays within the bonus object:
+// const [one, two, three] = first;
+// const [four, five, six] = second;
+// const [seven, eight, nine] = third;
+
+// BUT THIS WILL DO IT ALL IN LESS LINES:
+const [one, two, three] = bonus.first;
+const [four, five, six] = bonus.second;
+const [seven, eight, nine] = bonus.third;
+console.log(one, two, three, four, five, six, seven, eight, nine);
